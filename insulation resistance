@@ -1,0 +1,27 @@
+import math
+
+print("Single Core Cable - Insulation Resistance Calculator")
+
+# Input values
+rho = float(input("Enter insulation resistivity (Ω·m): "))
+L = float(input("Enter cable length (m): "))
+d_mm = float(input("Enter conductor diameter (mm): "))
+D_mm = float(input("Enter outer diameter of insulation (mm): "))
+
+# Convert mm to metres
+d = d_mm / 1000
+D = D_mm / 1000
+
+# Check dimensions
+if D <= d:
+    print("Error: Outer diameter must be greater than conductor diameter.")
+else:
+    # Insulation resistance formula
+    R = (rho / (2 * math.pi * L)) * math.log(D / d)
+
+    # Convert to Megaohms
+    R_MOhm = R / 1e6
+
+    print("\n--- Result ---")
+    print(f"Insulation Resistance = {R:.4e} Ω")
+    print(f"Insulation Resistance = {R_MOhm:.4e} MΩ")
